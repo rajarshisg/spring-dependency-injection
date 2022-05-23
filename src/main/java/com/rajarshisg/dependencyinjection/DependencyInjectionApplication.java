@@ -1,10 +1,13 @@
 package com.rajarshisg.dependencyinjection;
 
 import com.rajarshisg.dependencyinjection.controllers.*;
+import cs.di.one.TestClass;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"com.rajarshisg.dependencyinjection", "cs.di.one"})
 @SpringBootApplication
 public class DependencyInjectionApplication {
 
@@ -44,6 +47,8 @@ public class DependencyInjectionApplication {
 
         System.out.println(constructorInjectedController.sayGreeting());
 
+        TestClass testClass = (TestClass) ctx.getBean("testClass");
+        testClass.print();
 
     }
 
